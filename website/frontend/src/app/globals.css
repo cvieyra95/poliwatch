@@ -1,0 +1,91 @@
+body{
+    background-color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.donation {
+    background-color: #E39C77;
+    color:white;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    background-color: #848BA4;
+    padding: 15px 10px;
+}
+nav .nav-left, nav .nav-right{
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    color: #fff;
+    margin: 0 15px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+nav a:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.main{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    justify-content: space-between;
+}
+
+
+.mainarticle {
+  display: flex;
+  gap: 50px;
+  padding: 20px;
+  background-color: #fff;
+  border-bottom: 5px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px #ddd;
+  max-width: 1080px;
+}
+
+.mainarticle img {
+  max-width: 300px;
+  height: 300px;
+  flex: 1 1 20%;
+  border-radius: 6px;
+}
+
+.description {
+  flex: 1 2 50%;
+}
+
+.description h2 a {
+  text-decoration: none;
+  color: #000;
+  font-size: 1.8rem;
+}
+
+.description p {
+  margin-top: 0.5rem;
+  color: #555;
+}
+.otherarticles{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    background-color: #fff;
+    border-bottom: 5px solid #ddd;
+    border-radius: 10px;
+    
+    max-width: 1100px;
+    padding: 10px;
+}
