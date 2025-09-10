@@ -46,7 +46,7 @@ export default async function Home() {
                 <img src={articles[0].thumbnail} alt={articles[0].title}/>
                 <div className="description">
                   <h2>
-                    <a href={articles[0].link}>{articles[0].title}</a>
+                    <a href={articles[0].link} target="_blank">{articles[0].title}</a>
                   </h2>
                   <p>{articles[0].snippet}</p>
                   <span className="source">Source: {articles[0].source}</span>

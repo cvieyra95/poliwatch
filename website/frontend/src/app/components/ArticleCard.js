@@ -7,7 +7,7 @@ export default function ArticleCard({ article }) {
       <img src={article.thumbnail ?? "/Images/default.jpg"} alt={article.title} />
       <div className={styles.text}>
         <h3>
-          <a href={article.link}>{article.title}</a>
+          <a href={article.link} target="_blank">{article.title}</a>
         </h3>
         <p>{article.snippet}</p>
       </div>

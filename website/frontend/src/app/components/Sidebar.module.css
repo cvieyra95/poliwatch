@@ -1,0 +1,35 @@
+.sidebar{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.tradebox{
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px #ddd;
+    color: black;
+    min-width: 300px;
+    margin-top: -345px;
+    max-height: 385px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: black;
+}
+.tradeheader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+}
+
+.viewall {
+    color: black;
+    font-size: 14px;
+}
+
+.trades {
+    list-style-type: none;
+    padding-left: 5;
+}
