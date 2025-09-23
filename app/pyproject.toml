@@ -1,0 +1,13 @@
+[poliwatch]
+name = "poliwatch-api"
+version = "0.1.0"
+dependencies = [
+  "fastapi",
+  "uvicorn[standard]",
+  "sqlalchemy>=2.0",
+  "psycopg[binary]>=3.2",      # Postgres; if you start on SQLite, also add "pysqlite3-binary"
+  "alembic",
+  "pydantic>=2",
+  "httpx>=0.27",
+  "python-dotenv",
+]

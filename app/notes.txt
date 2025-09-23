@@ -1,0 +1,1 @@
+Make sure in config.py and other areas where "other1_api_key" and "other2_api_key" we replace them. 
