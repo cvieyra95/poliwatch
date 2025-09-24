@@ -44,14 +44,33 @@ class Member(Base):
 
 class Vote(Base):
     __tablename__ = "votes"
-    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
-    roll_number: Mapped[str | None] = mapped_column(String(32), index=True)   # external id
-    chamber: Mapped[str | None] = mapped_column(String(16))
-    question: Mapped[str | None] = mapped_column(String(500))
-    date: Mapped[DateTime | None] = mapped_column(DateTime)
+    id:          Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
+    congress:    Mapped[int] = mapped_column(Integer, index=True)  # Ex: 117
+    session:     Mapped[int] = mapped_column(Integer, index=True)   # Ex:
+    chamber:     Mapped[str] = mapped_column(ChamberEnum, index=True)  # Ex: "House"
+    roll_number: Mapped[str] = mapped_column(Integer, index=True)   # external id
 
-    records: Mapped[list["VoteRecord"]] = relationship(back_populates="vote")
-    __table_args__ = (UniqueConstraint("roll_number", "chamber", name="uq_vote_roll_chamber"),)
+    question:    Mapped[str | None] = mapped_column(String(500), nullable=False)  # Ex: "On Passage"
+    description: Mapped[str | None] = mapped_column(String(2000))  #
+    date:        Mapped[DateTime | None] = mapped_column(DateTime, index=True)  # Ex: "2021-03-11T05:00:00Z"
+
+    result:      Mapped[str | None] = mapped_column(String(32))  # Ex: "Passed"
+    threshold:  Mapped[str | None] = mapped_column(String(32))  # Ex: "2/3"
+    yea_count:   Mapped[int | None] = mapped_column(SmallInteger)  # Ex: 220
+    nay_count:   Mapped[int | None] = mapped_column(SmallInteger)  # Ex: 211
+    present_count: Mapped[int | None] = mapped_column(SmallInteger)  # Ex: 0
+    not_voting_count: Mapped[int | None] = mapped_column(SmallInteger)  # Ex: 4
+
+    records: Mapped[list["VoteRecord"]] = relationship(
+        back_populates="vote",
+        cascade="all, delete-orphan",)
+    
+    __table_args__ = (UniqueConstraint(
+        "roll_number", 
+        "chamber", 
+        name="uq_vote_roll_chamber"),
+        Index("ix_vote_day_chamber", "date", "chamber"),
+        )
 
 class VoteRecord(Base):
     __tablename__ = "vote_records"
