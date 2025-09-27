@@ -1,11 +1,13 @@
-from pydantic import BaseModel
-import os
+from pydantic_settings import BaseSettings
 
-class Settings(BaseModel):
-    env: str = os.getenv("ENV", "dev")
-    database_url: str = os.getenv("DATABASE_URL", "sqlite:///./local.db")
-    congress_api_key: str = os.getenv("CONGRESS_API_KEY", "")
-    other1_api_key: str = os.getenv("OTHER1_API_KEY", "")
-    other2_api_key: str = os.getenv("OTHER2_API_KEY", "")
+class Settings(BaseSettings):
+    DATABASE_URL: str
+    CONGRESS_API_KEY: str
+    CONGRESS_BASE_URL: str = "https://api.congress.gov/v3"
+    APP_NAME: str = "Poliwatch API"
+    LOG_LEVEL: str = "INFO"
+
+    class Config:
+        env_file = ".env"
 
 settings = Settings()

@@ -1,6 +1,6 @@
-# app/api/v1/members.py
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
+
 from app.api.deps import get_db
 from app.schemas.members import MemberOut
 from app.services.members import get_member_by_id, list_members
