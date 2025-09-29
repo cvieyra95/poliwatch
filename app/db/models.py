@@ -38,6 +38,9 @@ class Member(Base):
     vote_records: Mapped[list["VoteRecord"]] = relationship(back_populates="member")
     committee_memberships: Mapped[list["CommitteeMembership"]] = relationship(back_populates="member")
 
+    sponsored_bills: Mapped[list["Bill"]] = relationship(back_populates="sponsor")
+
+
     __table_args__ = (
         CheckConstraint("state IS NULL OR REGEXP_LIKE(state, '^[A-Z]{2}$', 'c')", name="ck_member_state_uc"),
         CheckConstraint("district IS NULL OR (district BETWEEN 0 AND 56)", name="ck_member_district"),
@@ -77,7 +80,17 @@ class Bill(Base):
     title:  Mapped[str | None] = mapped_column(String(500))
     introduced_date: Mapped[datetime | None] = mapped_column(DateTime)
     sponsor_member_id: Mapped[int | None] = mapped_column(ForeignKey("members.id"))
-    sponsor: Mapped["Member"] | None = relationship(foreign_keys=[sponsor_member_id], backref="sponsored_bills")
+    
+    sponsor: Mapped["Member | None"] = relationship(
+    "Member",
+    foreign_keys=[sponsor_member_id],
+    back_populates="sponsored_bills",
+    )
+
+    votes: Mapped[list["Vote"]] = relationship(
+        back_populates="bill",
+        cascade="all, delete-orphan",
+    )
 
     __table_args__ = (
         UniqueConstraint("congress","bill_type","number", name="uq_bill_identity"),
@@ -104,7 +117,7 @@ class Vote(Base):
     not_voting_count: Mapped[int | None] = mapped_column(SmallInteger)  # Ex: 4
 
     bill_id: Mapped[int | None] = mapped_column(ForeignKey("bills.id"), index=True)
-    bill:    Mapped["Bill"] | None = relationship(backref="votes")
+    bill: Mapped["Bill | None"] = relationship(back_populates="votes")
     records: Mapped[list["VoteRecord"]] = relationship( back_populates="vote", cascade="all, delete-orphan",)
     
     __table_args__ = (

@@ -1,4 +1,4 @@
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     DATABASE_URL: str
@@ -7,7 +7,10 @@ class Settings(BaseSettings):
     APP_NAME: str = "Poliwatch API"
     LOG_LEVEL: str = "INFO"
 
-    class Config:
-        env_file = ".env"
+    ENV: str = "dev"
+    OTHER1_API_KEY: str | None = None
+    OTHER2_API_KEY: str | None = None
+
+    model_config = SettingsConfigDict(env_file=".env", extra="forbid")
 
 settings = Settings()
