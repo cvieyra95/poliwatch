@@ -1,0 +1,65 @@
+.container {
+  padding: 20px;
+}
+
+.sortControls button{
+  color: white;
+  background-color: #848BA4;
+  border: none;
+
+  width: 240px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  cursor: pointer;
+}
+
+.sortControls button:focus {
+  box-shadow: #eaeaea;
+  border-bottom: 2px solid #E39C77;
+}
+.sortControls button:hover {
+  background-color: #5a5f73;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: inset;
+  
+}
+
+.table th,
+.table td {
+  
+  padding: 10px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #848BA4;
+  color: white;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+.table tr:hover {
+  background-color: #eaeaea;
+}
+.stateGroup {
+  margin-bottom: 40px;
+}
+
+.stateHeader {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+
+.row {
+  cursor: pointer;
+}

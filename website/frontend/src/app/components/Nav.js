@@ -1,13 +1,15 @@
+import Link from "next/link";
+
 export default function Nav() {
     return(
         <nav>
             <div className="nav-left">
-                <a>News</a>
-                <a>Politicians</a>
-                <a>Activists</a>
+                <Link href="/">News</Link>
+                <Link href="/politicians">Politicians</Link>
+                <Link href="/activists">Activists</Link>
             </div>
             <div className="nav-right">
-                <a>Sign In</a>
+                <Link href="/signin">Sign In</Link>
             </div>
             
         </nav>
