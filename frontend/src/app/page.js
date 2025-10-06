@@ -26,7 +26,7 @@ async function fetchArticles() {
       snippet: a.description,
       source: a.source.name,
       thumbnail: a.urlToImage || "/Images/default.jpg",
-    }))
+    } || []))
   );
 }
 
