@@ -4,6 +4,7 @@ import Header from "../components/Header"
 import Nav from "../components/Nav"
 import { useState, useEffect } from "react";
 import styles from "./politicians.module.css";
+import Footer from "../components/Footer"
 
 export default function Politicians() {
   const [politicians, setPoliticians] = useState([]);
@@ -12,7 +13,7 @@ export default function Politicians() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch("http://localhost:3001/politicians"); //API
+        const res = await fetch(""); //Calls the politicians API
         const data = await res.json();
         setPoliticians(data);
       } catch (err) {
@@ -23,7 +24,7 @@ export default function Politicians() {
   }, []);
 
   const sortedPoliticians = [...politicians].sort((a, b) => {
-    if (sortBy === "name") return a.name.localeCompare(b.name);
+    if (sortBy === "name") return a.last_name.localeCompare(b.last_name);
     if (sortBy === "state") return a.state.localeCompare(b.state);
     return 0;
   });
@@ -61,9 +62,9 @@ export default function Politicians() {
             {groupedByState[state]
               .sort((a, b) => a.district - b.district)
               .map((p) => (
-                <tr className="row" key={p.id} onClick={() => window.open(p.url, "_blank")}>
+                <tr className={styles.row} key={p.id} onClick={() => window.open(p.url, "_blank")}>
                   <td>{p.district}</td>
-                  <td>{p.name}</td>
+                  <td>{p.last_name} {p.first_name}</td>
                   <td>{p.state}</td>
                   <td>{p.party}</td>
                 </tr>
@@ -83,8 +84,8 @@ export default function Politicians() {
       </thead>
       <tbody>
         {sortedPoliticians.map((p) => (
-          <tr className="row" key={p.id} onClick={() => window.open(p.url, "_blank")}>
-            <td>{p.name}</td>
+          <tr className={styles.row} key={p.id} onClick={() => window.open(p.website_url, "_blank")}>
+            <td>{p.last_name} {p.first_name}</td>
             <td>{p.state}</td>
             <td>{p.party}</td>
           </tr>
@@ -93,6 +94,7 @@ export default function Politicians() {
     </table>
   )}
     </div>
+    <Footer/>
     </div>
   );
 }

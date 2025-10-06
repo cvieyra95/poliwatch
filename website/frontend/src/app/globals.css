@@ -31,6 +31,7 @@ nav a {
     margin: 0 15px;
     font-weight: bold;
     font-size: 15px;
+    text-decoration: none;
 }
 
 nav a:hover {
@@ -54,7 +55,7 @@ nav a:hover {
   border-bottom: 5px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 2px 8px #ddd;
-  max-width: 1080px;
+  max-width: 1030px;
 }
 
 .mainarticle img {
@@ -86,6 +87,6 @@ nav a:hover {
     border-bottom: 5px solid #ddd;
     border-radius: 10px;
     
-    max-width: 1100px;
+    max-width: 1060px;
     padding: 10px;
 }
