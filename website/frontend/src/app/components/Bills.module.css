@@ -2,8 +2,9 @@
     display: flex;
     position: absolute;
     flex-direction: column;
-    top: 220px;
+    top: 565px;
     right: 10px;
+    z-index: 1000;
 }
 
 .tradebox{
@@ -12,13 +13,11 @@
     border-radius: 12px;
     box-shadow: 0 2px 8px #ddd;
     color: black;
-    min-width: 50px;
-    max-width: 400px;
-    max-height: 320px;
+    width: 400px;
+    height: 416px;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: black;
-    
+    scrollbar-color: black
 }
 .tradeheader{
     display: flex;
@@ -28,8 +27,6 @@
     font-size: 0.9rem; 
     margin-top: -15px;
     margin-bottom: -10px;
-    position: sticky;
-    top: -20;
     
 }
 
@@ -39,7 +36,7 @@
     cursor: pointer;
 }
 .table{
-  width: 100%;    
+  width: 100%;       
   font-size: 0.85rem; 
 }
 
@@ -47,7 +44,6 @@
 .table td {
   padding: 5px;
   text-align: left;
-  
 }
 
 
@@ -55,8 +51,6 @@
   background-color: #848BA4;
   color: white;
   position: sticky;
-  top: -10px;
-  
 }
 
 .table tr:nth-child(even) {
@@ -78,7 +72,4 @@
 }
 .sell{
   color: red;
-}
-.symbol a{
-  text-decoration: none;
 }
