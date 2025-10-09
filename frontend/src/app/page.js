@@ -19,15 +19,21 @@ async function fetchArticles() {
 
   const response = await fetch(url, {next: { revalidate: 3600 }});
   const data = await response.json()
-  return (
+  if (Array.isArray(data.articles)){
+    return (
     data.articles.map((a) => ({
       title: a.title,
       link: a.url,
       snippet: a.description,
       source: a.source.name,
       thumbnail: a.urlToImage || "/Images/default.jpg",
-    } || []))
+    }))
   );
+  }
+  else {
+    return [];
+  }
+  
 }
 
 export default async function Home() {
