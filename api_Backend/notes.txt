@@ -1,0 +1,67 @@
+Make sure in config.py and other areas where "other1_api_key" and "other2_api_key" we replace them. 
+
+Make sure your terminal looks like this.
+PS C:\Users\conne\.gitlore\Poliwatch\poliwatch\api_Backend>
+
+4164keeverave.
+
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+.\env\Scripts\Activate.ps1
+
+
+python -c "from app.db.session import engine; c=engine.connect(); print(c.exec_driver_sql('SELECT 1').scalar()); c.close()"
+
+(.venv) PS C:\Users\conne\.gitlore\Poliwatch> python -c "from app.core.config import settings; print(settings.DATABASE_URL)"
+mysql+pymysql://poliwatch:4164keeverave.@127.0.0.1:3306/poliwatch?charset=utf8mb4
+
+python -c "from app.db.session import engine; c=engine.connect(); print(c.exec_driver_sql('SELECT 1').scalar()); c.close()"
+
+(.venv) PS C:\Users\conne\.gitlore\Poliwatch> python -c "from app.db.session import engine; c=engine.connect(); print(c.exec_driver_sql('SELECT 1').scalar()); c.close()"
+1
+
+uvicorn
+cd C:\Users\conne\.gitlore\Poliwatch\poliwatch\api_Backend
+.\env\Scripts\Activate.ps1    # if not already active
+uvicorn apitosql:app --reload --host 127.0.0.1 --port 8000
+
+
+
+
+
+
+
+
+
+def normalize_terms(item: dict) -> list[dict]:
+    root = item.get("member", item)
+
+    raw_terms = root.get("terms") or root.get("memberTerms") or root.get("roles") or {}
+    terms_list = _unwrap_list(raw_terms)
+    if not terms_list:
+        terms_list = [d for d in _iter_nodes(root) if _looks_like_term(d)]
+
+    out: list[dict] = []
+    for t in terms_list:
+        ch = _chamber(t.get("chamber") or t.get("chamberName") or t.get("type"))
+        st = _state_code(t.get("stateCode") or t.get("state") or t.get("stateAbbreviation"))
+        district = _norm_district(t.get("district") or t.get("districtNumber") or t.get("cd"), ch)
+        party = _party(t.get("party") or t.get("partyName") or t.get("partyAffiliation"))
+
+        start_raw = t.get("start_date") or t.get("startDate") or t.get("start") or t.get("begin")
+        end_raw   = t.get("end_date")   or t.get("endDate")   or t.get("end")   or t.get("until")
+
+        start_dt = _parse_dt(start_raw)
+        end_dt   = _parse_dt(end_raw)
+
+        if not (ch and st and start_dt):
+            continue
+
+        out.append({
+            "chamber": ch,          # Enum expected by your model
+            "state": st,            # 2-letter
+            "district": district,   # int|None
+            "party": party,         # Enum|None
+            "start_date": start_dt, # datetime
+            "end_date": end_dt,     # datetime|None
+        })
+    return out
