@@ -4,45 +4,41 @@ from database import SessionLocal
 import models
 from app.ingest.congressapi_client import CongressClient
 from app.ingest.mappers import normalize_terms
+from sqlalchemy import select
+from sqlalchemy.exc import IntegrityError
 
 
 def upsert_terms(db, member_id: int, terms: list[dict]) -> int:
     """
-    Insert missing terms for a member. We treat the tuple
-    (chamber, state, district, start_date, end_date) as a uniqueness key
-    and skip duplicates.
-
-    Returns: number of new rows inserted.
+    Insert missing terms for a member.
+    Uniqueness is (member_id, congress, chamber).
     """
-    # Load existing terms for this member
-    
     terms = terms or []
-    existing = db.query(models.MemberTerm).filter(
-        models.MemberTerm.member_id == member_id
+
+    # cache existing keys from DB
+    rows = db.execute(
+        select(models.MemberTerm.congress, models.MemberTerm.chamber)
+        .where(models.MemberTerm.member_id == member_id)
     ).all()
+    existing = {(c, ch) for c, ch in rows}
 
-    # Build a set of existing "keys" so we can skip duplicates
-    existing_keys = {(et.congress, et.chamber) for et in existing}
-
-    
     added = 0
     for t in terms:
         key = (t["congress"], t["chamber"])
-        if key in existing_keys:
-            continue  # already have it
+        if key in existing:
+            continue
 
-        # Create a new MemberTerm row
         db.add(models.MemberTerm(
-            member_id = member_id,
-            congress  = t["congress"],
-            chamber   = t["chamber"],
-            state     = t["state"],
-            district  = t["district"],
-            party     = t["party"],
+            member_id  = member_id,
+            congress   = t["congress"],
+            chamber    = t["chamber"],
+            state      = t["state"],
+            district   = t["district"],
+            party      = t["party"],
             start_year = t["start_year"],
             end_year   = t["end_year"],
         ))
-        existing_keys.add(key)
+        existing.add(key)
         added += 1
 
     return added

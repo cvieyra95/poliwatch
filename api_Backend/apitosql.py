@@ -1,4 +1,6 @@
+import os
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import models as models                 
 from database import engine             
 
@@ -12,6 +14,18 @@ from app.router.committees import router as committees_router
 from app.router.committee_memberships import router as committee_memberships_router
 
 app = FastAPI()
+
+_allowed = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "").split(",") if o.strip()]
+if not _allowed:
+    _allowed = ["http://localhost:5173"]  # safe dev fallback
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=_allowed,
+    allow_credentials=False,              # leave False unless you do cookie auth
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["*"],
+)
 
 # Create tables once at startup (not at import-time)
 @app.on_event("startup")
