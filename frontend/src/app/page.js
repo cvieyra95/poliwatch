@@ -15,7 +15,9 @@ async function fetchArticles() {
   let q = 'politics'
   let sources = 'politico, cnn'
   let language = 'en'
-  const url = new URL(`https://newsapi.org/v2/everything?q=${q}&sources=${sources}&language=${language}&apiKey=${API_KEY}`);//Calls News API, we can change this
+
+  //Calls News API,
+  const url = new URL(`https://newsapi.org/v2/everything?q=${q}&sources=${sources}&language=${language}&apiKey=${API_KEY}`);
 
   const response = await fetch(url, {next: { revalidate: 3600 }});
   const data = await response.json()

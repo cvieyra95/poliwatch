@@ -3,14 +3,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
+    padding: 1.25rem;
     background-color: #848BA4;
 }
 .nav{
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin-top: -60px;
+    gap: 2.5rem;
+    margin-top: -3.75rem;
 }
 
 .nav a{
@@ -18,7 +18,7 @@
     color: black;
 }
 .logo{
-    width: 120px;
-    height: 120px;
-    padding-left: 200px;
+    width: 7.5rem;
+    height: 7.5rem;
+    padding-left: 12.5rem;
 }

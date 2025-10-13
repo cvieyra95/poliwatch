@@ -2,24 +2,23 @@
     display: flex;
     position: absolute;
     flex-direction: column;
-    top: 565px;
-    right: 10px;
-    z-index: 1000;
-}
+    top: 34.45rem;
+    right: 0.625rem;
+  }
 
-.tradebox{
+.billbox{
     background-color: #fff;
-    padding: 10px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px #ddd;
+    padding: .625rem;
+    border-radius: .75rem;
+    border-bottom: .1em solid #ddd;
     color: black;
-    width: 400px;
-    height: 416px;
+    width: 27.5rem;
+    height: 25.5rem;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: black
 }
-.tradeheader{
+.billheader{
     display: flex;
     align-items: center;
     justify-content: space-between;
