@@ -13,7 +13,7 @@ export default function Politicians() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("http://127.0.0.1:8000/politicians"); //Calls the politicians API https://apibackend-production-e816.up.railway.app/members?chamber=house
+        const response = await fetch("https://apibackend-production-e816.up.railway.app/members?chamber=house"); //Calls the politicians API https://apibackend-production-e816.up.railway.app/members?chamber=house
         const politician = await response.json();
         setPoliticians(politician);
       } catch (err) {
