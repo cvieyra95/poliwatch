@@ -9,7 +9,7 @@ export default function Bills() {
   useEffect(() => {
       async function fetchBills() {
         try {
-          const res = await fetch(""); //Call API for Bills
+          const res = await fetch("http://127.0.0.1:8000/bills"); //Call API for Bills
           const data = await res.json();
           setBills(data);
         } catch (err) {
@@ -36,8 +36,8 @@ export default function Bills() {
 
   return (
     <div className={styles.sidebar}>
-      <div className={styles.tradebox}>
-        <div className={styles.tradeheader}>
+      <div className={styles.billbox}>
+        <div className={styles.billheader}>
           <h3>Latest Bills</h3>
           <a className={styles.viewall}>Vew All</a>
         </div>

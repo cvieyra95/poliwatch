@@ -13,9 +13,9 @@ export default function Politicians() {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch(""); //Calls the politicians API
-        const data = await res.json();
-        setPoliticians(data);
+        const response = await fetch("http://127.0.0.1:8000/politicians"); //Calls the politicians API https://apibackend-production-e816.up.railway.app/members?chamber=house
+        const politician = await response.json();
+        setPoliticians(politician);
       } catch (err) {
         console.error("Error fetching politicians:", err);
       }
@@ -39,7 +39,7 @@ export default function Politicians() {
         <Header/>
         <Nav/>
     <div className={styles.container}>
-        <h2>Memebers of Congress</h2>
+        <h2>Members of Congress</h2>
       <div className={styles.sortControls}>
         <button value="name" onClick={(e) => setSortBy(e.target.value)}>By Last Name</button>
         <button value="state" onClick={(e) => setSortBy(e.target.value)}>By State</button>
@@ -62,7 +62,7 @@ export default function Politicians() {
             {groupedByState[state]
               .sort((a, b) => a.district - b.district)
               .map((p) => (
-                <tr className={styles.row} key={p.id} onClick={() => window.open(p.url, "_blank")}>
+                <tr className={styles.row} key={p.bioguideId} onClick={() => window.open(p.url, "_blank")}>
                   <td>{p.district}</td>
                   <td>{p.last_name} {p.first_name}</td>
                   <td>{p.state}</td>
@@ -84,7 +84,7 @@ export default function Politicians() {
       </thead>
       <tbody>
         {sortedPoliticians.map((p) => (
-          <tr className={styles.row} key={p.id} onClick={() => window.open(p.website_url, "_blank")}>
+          <tr className={styles.row} key={p.bioguideId} onClick={() => window.open(p.website_url, "_blank")}>
             <td>{p.last_name} {p.first_name}</td>
             <td>{p.state}</td>
             <td>{p.party}</td>

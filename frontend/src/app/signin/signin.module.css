@@ -1,0 +1,25 @@
+.signin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    flex-direction: column; 
+    margin-top: 6.25rem;
+    background-color:  #848BA4;
+    width: 40%;
+    height: 80%;
+    border-radius: 0.625rem;
+    color: white;
+}
+
+.form input{
+    display: flex;
+    flex-direction: column;
+    padding: .5625rem;
+    margin: 0.625rem;
+    
+}
+
+.rememberme{
+    margin-top: 0.125rem;
+}

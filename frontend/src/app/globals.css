@@ -42,27 +42,27 @@ nav a:hover {
 .main{
     display: flex;
     flex-wrap: wrap;
-    gap: 2px;
+    gap: .5em;
     justify-content: space-between;
 }
 
 
 .mainarticle {
   display: flex;
-  gap: 50px;
-  padding: 20px;
+  gap: 5em;
+  padding: 1.25em;
   background-color: #fff;
-  border-bottom: 5px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px #ddd;
-  max-width: 1030px;
+  border-bottom: .1em solid #ddd;
+  border-radius: .5em;
+  max-width: 62em;
+  border-right: .1em solid #ddd;
 }
 
 .mainarticle img {
-  max-width: 300px;
-  height: 300px;
+  max-width: 18em;
+  height: 18em;
   flex: 1 1 20%;
-  border-radius: 6px;
+  border-radius: .25em;
 }
 
 .description {
@@ -81,12 +81,13 @@ nav a:hover {
 }
 .otherarticles{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(auto-fit, minmax(9.5em, 1fr));
+    gap: .5em;
     background-color: #fff;
-    border-bottom: 5px solid #ddd;
-    border-radius: 10px;
+    border-bottom: .1em solid #ddd;
+    border-right: .1em solid #ddd;
+    border-radius: .5em;
     
-    max-width: 1060px;
-    padding: 10px;
+    max-width: 63.5em;
+    padding: .5em;
 }

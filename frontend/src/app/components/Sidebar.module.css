@@ -2,19 +2,18 @@
     display: flex;
     position: absolute;
     flex-direction: column;
-    top: 220px;
-    right: 10px;
+    top: 13.75rem;
+    right: .5rem;
 }
 
 .tradebox{
     background-color: #fff;
-    padding: 10px;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px #ddd;
+    padding: .625rem;
+    border-radius: .75rem;
+    border-bottom: .1em solid #ddd;
     color: black;
-    min-width: 50px;
-    max-width: 400px;
-    max-height: 320px;
+    width: 27.7rem;
+    height: 19.25rem;
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: black;
@@ -26,36 +25,35 @@
     justify-content: space-between;
     font-size: 1rem;
     font-size: 0.9rem; 
-    margin-top: -15px;
-    margin-bottom: -10px;
+    margin-top: -.95rem;
+    margin-bottom: -.625rem;
     position: sticky;
-    top: -20;
     
 }
 
 .viewall {
     color: black;
-    font-size: 12px;
+    font-size: .75rem;
     cursor: pointer;
 }
 .table{
   width: 100%;    
   font-size: 0.85rem; 
+  border-collapse: collapse;
+
 }
 
 .table th,
 .table td {
-  padding: 5px;
+  padding: .35rem;
   text-align: left;
   
 }
-
 
 .table th {
   background-color: #848BA4;
   color: white;
   position: sticky;
-  top: -10px;
   
 }
 

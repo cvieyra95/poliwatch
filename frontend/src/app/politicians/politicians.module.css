@@ -1,5 +1,5 @@
 .container {
-  padding: 20px;
+  padding: 1.25rem;
 }
 
 .sortControls button{
@@ -7,18 +7,18 @@
   background-color: #848BA4;
   border: none;
 
-  width: 240px;
-  font-size: 18px;
+  width: 15rem;
+  font-size: 1.125rem;
   font-weight: bold;
-  margin-top: 50px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin-top: 3.125rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
   cursor: pointer;
 }
 
 .sortControls button:focus {
   box-shadow: #eaeaea;
-  border-bottom: 2px solid #E39C77;
+  border-bottom: 0.125rem solid #E39C77;
 }
 .sortControls button:hover {
   background-color: #5a5f73;
@@ -34,7 +34,7 @@
 .table th,
 .table td {
   
-  padding: 10px;
+  padding: 0.625rem;
   text-align: left;
 }
 
@@ -51,13 +51,13 @@
   background-color: #eaeaea;
 }
 .stateGroup {
-  margin-bottom: 40px;
+  margin-bottom: 2.5rem;
 }
 
 .stateHeader {
   font-size: 1.5rem;
-  margin-bottom: 10px;
-  padding-bottom: 5px;
+  margin-bottom: 0.625rem;
+  padding-bottom: .3125rem;
 }
 
 .row {
