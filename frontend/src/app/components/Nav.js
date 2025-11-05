@@ -1,6 +1,10 @@
+'use client'
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react"
 
 export default function Nav() {
+    const {data: session} = useSession()
+    console.log(session)
     return(
         <nav>
             <div className="nav-left">
@@ -8,10 +12,19 @@ export default function Nav() {
                 <Link href="/politicians">Politicians</Link>
                 <Link href="/activists">Activists</Link>
             </div>
-            <div className="nav-right">
-                <Link href="/signin">Sign In</Link>
-            </div>
+           
             
+             {session ? (
+                <div className="greeting"> 
+                <h3>Welcome, {session.user.firstName}</h3>
+                {/* <p>Zipcode: {session.user.zipcode}</p>*/}
+                <button onClick={() =>signOut({callbackUrl:'/'})}>Sign Out</button>
+                </div>
+                ) : (
+                     <div className="nav-right">
+                     <Link href="/signin">Sign In</Link>   
+                    </div>
+                )}
         </nav>
     )
 }

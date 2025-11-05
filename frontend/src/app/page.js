@@ -1,4 +1,4 @@
-
+//Functional Requirement #2
 import Header from "./components/Header"
 import Nav from "./components/Nav"
 import ArticleCard from "./components/ArticleCard"
@@ -43,7 +43,7 @@ export default async function Home() {
   return (
     <div>
       <Header />
-        <Nav />
+      <Nav />
           <main className="main">
             {articles[0] && (
               <section className="mainarticle">

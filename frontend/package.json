@@ -8,8 +8,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "newsapi": "^2.4.1",
     "next": "^15.5.4",
+    "next-auth": "^4.24.11",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },

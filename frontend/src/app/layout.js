@@ -1,14 +1,20 @@
 // Src/app/layout.js
+import { SessionProvider } from "./components/SessionProvider";
 import "./globals.css";
 
 export const metadata = {
   title: "PoliWatch Hub",
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children}) {
   return (
+    
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SessionProvider>
+        {children}
+        </SessionProvider>
+        </body>
     </html>
   );
 }

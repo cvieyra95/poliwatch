@@ -1,5 +1,5 @@
+//Functional Requrement #6
 "use client"; // needed for useState & useEffect
-
 import Header from "../components/Header"
 import Nav from "../components/Nav"
 import { useState, useEffect } from "react";

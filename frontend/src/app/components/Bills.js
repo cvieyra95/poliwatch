@@ -5,34 +5,20 @@ import { useState, useEffect } from "react";
 
 export default function Bills() {
 
-  const [bills, setBills] = useState([]);
+  const [bills, setBills] = useState([])
+  const [votes, setVotes] = useState([])
   useEffect(() => {
       async function fetchBills() {
         try {
-          const res = await fetch("http://127.0.0.1:8000/bills"); //Call API for Bills
-          const data = await res.json();
+          const res = await fetch("https://apibackend-production-e816.up.railway.app/bills/?congress=119&limit=15") //Call API for Bills
+          const data = await res.json()
           setBills(data);
         } catch (err) {
-          console.error("Error fetching Bills:", err);
+          console.error("Error fetching Bills:", err)
         }
       }
       fetchBills();
     }, []);
-
-    function getStatus(latestAction){
-
-      if (!latestAction) return "Unknown";
-
-      const text =  latestAction.toLowerCase();
-      
-      if(text.includes("passed") || text.includes("became public law")){
-        return("Passed");
-      }
-      if(text.includes("vote") || text.includes("calendar") || text.includes("introduced")){
-        return("Pending Vode");
-      }
-      return "Introduced";
-    }
 
   return (
     <div className={styles.sidebar}>
@@ -54,10 +40,10 @@ export default function Bills() {
             {bills.map((b) => {
               return (
               <tr key={b.id}>
-                <td>{b.origin_chamber}</td>
-                <td><a href={`https://www.congress.gov/bill/119th-congress/${b.bill_type}/${b.bill_number}`} target="_blank"> {b.bill_type} {b.bill_number}</a></td>
-                <td>{b.update_data}</td>
-                <td>{getStatus(b.action)}</td>
+                <td>{b.congress}</td>
+                <td><a href={`https://www.congress.gov/bill/119th-congress/${b.bill_type}/${b.bill_number}`} target="_blank"> {b.bill_type} {b.number}</a></td>
+                <td>{b.introduced_date}</td>
+                <td>{}</td>
                 </tr>
 
            )})}

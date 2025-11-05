@@ -1,4 +1,4 @@
-.signin{
+.signup{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,10 +7,9 @@
     margin-top: 6.25rem;
     background-color:  #848BA4;
     width: 20rem;
-    height: 20rem;
+    height: 25rem;
     border-radius: 0.625rem;
     color: white;
-    
 }
 
 .form input{
@@ -22,14 +21,7 @@
     border-radius: .25rem;
     
 }
-
-.rememberme{
-    margin-top: 0;
-    margin-bottom: 2rem;
-    margin-right: 9rem;
-    font-size: .875rem;
-}
-.signIn{
+.signupbutton{
     background-color: #E39C77;
     color:white;
     padding: .75rem 1rem;
@@ -40,25 +32,6 @@
     font-size: .875rem;
     margin-bottom: 2rem;
 }
-.signUp {
-    display: flex;
-    flex-direction: row;
-    font-size: .875rem;
-    margin-left: 48.5rem;
-    margin-top: -8.7rem;
-    color: white;
-    
-}
-
-.signUp link{
-    color: #007bff;
-    cursor: pointer;
-    margin-top: .9rem;
-    text-decoration: none;
-}
-.link:hover {
-    text-decoration: underline;
-}
 .footer{
-    margin-top: 12rem;
+    margin-top: 7rem;
 }
