@@ -11,31 +11,36 @@ const handler = NextAuth({
                 password: { label: "Password", type: "password" }
             },
             async authorize(credentials, req){
-                const response = await fetch("https://authforpoliwatch-production.up.railway.app/auth/token", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify({
-                    email: credentials.email,
-                    password: credentials.password
-                })
+                try {
+                    const response = await fetch("https://authforpoliwatch-production.up.railway.app/auth/token", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                        email: credentials.email,
+                        password: credentials.password
+                    })
             })
+            if (!response.ok){
+                console.error("Backend Auth Failed", await response.text())
+            }
 
             const data = await response.json();
             console.log("USER FROM BACKEND:", data);
 
 
-            if(response.ok && data.user){
+            if(data && data.user){
                 return{
                     id: data.user.id,
                     email: data.user.email,
                     firstName: data.user.first_name,
-                    lastName: data.user.last_name,
-                    //zipcode: data.user.zipcode
+                    lastName: data.user.last_name
                 }
             }
-            else{
-                return null
-            }
+            return null
+        } catch(err){
+            console.error("Authorize error:", err)
+            return null
+        }
         }
     })
     ],
@@ -50,8 +55,7 @@ const handler = NextAuth({
             if(user)
             {
                 console.log("adding token", user)
-                token.firstName = user.firstName,
-                {/*token.zipcode = user.zipcode */}
+                token.firstName = user.firstName
             }
 
             return token
@@ -59,8 +63,7 @@ const handler = NextAuth({
     async session({session, token}){
         if(token)
         {
-            session.user.firstName = token.firstName,
-            {/* session.user.zipcode = token.zipcode */}
+            session.user.firstName = token.firstName
         }
         console.log("update after ", token)
         return session
