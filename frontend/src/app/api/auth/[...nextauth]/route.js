@@ -2,7 +2,6 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials"
 
 const handler = NextAuth({
-
     providers: [
         CredentialsProvider({
             name: "Credentials",
@@ -10,39 +9,47 @@ const handler = NextAuth({
                 email: { label: "emaile", type: "email", placeholder: "email" },
                 password: { label: "Password", type: "password" }
             },
-            async authorize(credentials, req){
-                try {
-                    const response = await fetch("https://authforpoliwatch-production.up.railway.app/auth/token", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                        email: credentials.email,
-                        password: credentials.password
-                    })
-            })
-            if (!response.ok){
-                console.error("Backend Auth Failed", await response.text())
-            }
+           async authorize(credentials) {
+  try {
+    // Send form-encoded data (what FastAPI expects)
+    const response = await fetch(
+      "https://authforpoliwatch-production.up.railway.app/auth/token",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+          username: credentials.username,
+          password: credentials.password,
+        }),
+      }
+    );
 
-            const data = await response.json();
-            console.log("USER FROM BACKEND:", data);
+    if (!response.ok) {
+      console.error("Backend auth failed:", await response.text());
+      return null;
+    }
+
+    const data = await response.json();
+    console.log("USER FROM BACKEND:", data);
+
+    if (data.access_token) {
+      return {
+        id: credentials.email,   
+        email: credentials.email,
+        accessToken: data.access_token,
+      };
+    }
+
+    return null;
+  } catch (err) {
+    console.error("Authorize error:", err);
+    return null;
+  }
+}
 
 
-            if(data && data.user){
-                return{
-                    id: data.user.id,
-                    email: data.user.email,
-                    firstName: data.user.first_name,
-                    lastName: data.user.last_name
-                }
-            }
-            return null
-        } catch(err){
-            console.error("Authorize error:", err)
-            return null
-        }
-        }
-    })
+        })
+        
     ],
     session:{
         strategy: "jwt"
