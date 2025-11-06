@@ -13,14 +13,14 @@ import { useState } from "react"
 
 export default function Signin() {
 
-    const [email, setEmail] = useState("")
+    const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
     const router = useRouter()
 
     const handleSignIn = async () => {
         const response = await signIn("credentials", {
-            email, 
+            username, 
             password, 
             redirect: false
         })
@@ -40,7 +40,7 @@ export default function Signin() {
             <div className={styles.signin}>
                 <h1>Sign In</h1>
                 <div className={styles.form}>
-                <input type="email"  value={email} name= "email" onChange={(e) => setEmail(e.target.value)} placeholder="Email"></input>
+                <input type="username"  value={username} name= "username" onChange={(e) => setUsername(e.target.value)} placeholder="Username"></input>
                 <input type="password" value={password} name="password" onChange={(e) => setPassword(e.target.value)} placeholder="Password"></input>
                 </div>
                 <div className={styles.rememberme}>

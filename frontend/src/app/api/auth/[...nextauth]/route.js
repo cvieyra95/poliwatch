@@ -6,7 +6,7 @@ const handler = NextAuth({
         CredentialsProvider({
             name: "Credentials",
             credentials : {
-                email: { label: "emaile", type: "email", placeholder: "email" },
+                username: { label: "username", type: "username", placeholder: "username" },
                 password: { label: "Password", type: "password" }
             },
            async authorize(credentials) {
@@ -34,8 +34,8 @@ const handler = NextAuth({
 
     if (data.access_token) {
       return {
-        id: credentials.email,   
-        email: credentials.email,
+        id: credentials.username,   
+        username: credentials.username,
         accessToken: data.access_token,
       };
     }
