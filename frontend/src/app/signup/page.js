@@ -13,7 +13,7 @@ export default function Signup(){
     const [confirmPassword, setConfirmPassword] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
-    const [zipCode, setZipCode] = useState("")
+    const [username, setUsername] = useState("")
 
     const handleSubmit = async () => {
         if(password !== confirmPassword)
@@ -25,10 +25,10 @@ export default function Signup(){
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
+                username,
                 email, 
                 first_name: firstName, 
                 last_name: lastName, 
-                //zipcode: zipCode, 
                 password,
                 confirm_password: confirmPassword
             })
@@ -54,10 +54,9 @@ export default function Signup(){
                 <h2>Create An Account</h2>
                 <div className={styles.form}>
                 <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email"></input>
+                <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username"></input>
                 <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="First Name"></input>
                 <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Last Name"></input>
-                {/*<input type="text" value={zipCode} onChange={(e) => setZipCode(e.target.value)} placeholder="Zip code"></input> */}
-
                 <input type="password" value={password}onChange={(e) => setPassword(e.target.value)}placeholder="Password"></input>
                 <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}placeholder="Confirm Password"></input>
                 </div>
@@ -71,13 +70,3 @@ export default function Signup(){
         </div>
     )
 }
-
-
-/*{
-    "username": "johndoe",
-    "password": "supersecret",
-    "email": "john@example.com",
-    "first_name": "John",
-    "last_name": "Doe"
-}
-    */
