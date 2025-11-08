@@ -17,7 +17,7 @@ export default function Nav() {
              {session ? (
                 <div className="greeting"> 
                 <h3>Welcome, {session.user.username}</h3>
-                <button onClick={() =>signOut({callbackUrl:'https://www.csufpoliwatch.com'})}>Sign Out</button>
+                <button onClick={() =>signOut({callbackUrl:process.env.NEXT_PUBLIC_NEXTAUTH_URL})}>Sign Out</button>
                 </div>
                 ) : (
                      <div className="nav-right">
