@@ -1,11 +1,6 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials"
 
-console.log("NEXTAUTH STARTUP:", {
-  NEXTAUTH_URL: process.env.NEXTAUTH_URL,
-  NEXTAUTH_SECRET: !!process.env.NEXTAUTH_SECRET, // true/false
-});
-
 const handler = NextAuth({
     providers: [
         CredentialsProvider({
@@ -30,13 +25,10 @@ const handler = NextAuth({
     );
 
     if (!response.ok) {
-      console.error("Backend auth failed:", await response.text());
       return null;
     }
 
     const data = await response.json();
-    console.log("USER FROM BACKEND:", data);
-
     if (data.access_token) {
       return {
         id: credentials.username,   
@@ -47,7 +39,6 @@ const handler = NextAuth({
 
     return null;
   } catch (err) {
-    console.error("Authorize error:", err);
     return null;
   }
 }
@@ -67,7 +58,7 @@ const handler = NextAuth({
             if(user)
             {
                 console.log("adding token", user)
-                token.firstName = user.firstName
+                token.username = user.username
             }
 
             return token
@@ -75,9 +66,8 @@ const handler = NextAuth({
     async session({session, token}){
         if(token)
         {
-            session.user.firstName = token.firstName
+            session.user.username = token.username
         }
-        console.log("update after ", token)
         return session
         }
     }

@@ -16,8 +16,7 @@ export default function Nav() {
             
              {session ? (
                 <div className="greeting"> 
-                <h3>Welcome, {session.user.firstName}</h3>
-                {/* <p>Zipcode: {session.user.zipcode}</p>*/}
+                <h3>Welcome, {session.user.username}</h3>
                 <button onClick={() =>signOut({callbackUrl:'/'})}>Sign Out</button>
                 </div>
                 ) : (

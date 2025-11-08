@@ -5,6 +5,7 @@ import Header from "../components/Header"
 import Nav from "../components/Nav"
 import styles from "./signup.module.css"
 import Footer from "../components/Footer"
+import { useRouter } from 'next/navigation'
 
 export default function Signup(){
 
@@ -14,6 +15,7 @@ export default function Signup(){
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
     const [username, setUsername] = useState("")
+    const router = useRouter()
 
     const handleSubmit = async () => {
         if(password !== confirmPassword)
