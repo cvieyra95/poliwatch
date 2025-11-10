@@ -1,0 +1,4 @@
+.header, .about{
+    display: flex;
+    justify-content: center;
+}

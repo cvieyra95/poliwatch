@@ -10,7 +10,9 @@
     height: 20rem;
     border-radius: 0.625rem;
     color: white;
-    
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+
 }
 
 .form input{
@@ -20,6 +22,8 @@
     margin: 0.625rem;
     width: 15rem;
     border-radius: .25rem;
+    border: 1px solid transparent;
+
     
 }
 
@@ -28,6 +32,11 @@
     margin-bottom: 2rem;
     margin-right: 9rem;
     font-size: .875rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+  
 }
 .signIn{
     background-color: #E39C77;
@@ -42,11 +51,15 @@
 }
 .signUp {
     display: flex;
-    flex-direction: row;
     font-size: .875rem;
     margin-left: 48.5rem;
-    margin-top: -8.7rem;
+    margin-top: -8.9rem;
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.1rem;
+    
     
 }
 

@@ -5,6 +5,7 @@ import { signOut, useSession } from "next-auth/react"
 export default function Nav() {
     const {data: session} = useSession()
     console.log(session)
+
     return(
         <nav>
             <div className="nav-left">

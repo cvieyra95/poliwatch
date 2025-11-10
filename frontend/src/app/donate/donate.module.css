@@ -1,0 +1,70 @@
+.title{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8rem;
+}
+
+.donate {    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+    background-color:  #848BA4;
+    width: 50rem;
+    height: 20rem;
+    border-radius: 0.625rem;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+.donate h2{
+    color: white;   
+}
+.amount input[type="button"]{
+    padding: .75rem rem;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    border-radius: .5rem;
+    font-size: 1.7rem;
+    margin: 1rem;
+    width: 5rem;
+    height: 3rem;
+    
+}
+.custom input[type="number"]{
+    width: 25rem;
+    height: 3rem;
+    border-radius: .2rem;
+    font-weight: bold;
+    outline: none;
+    border: none;
+    font-size: 1.7rem;
+    margin-bottom: 2rem;
+}
+::placeholder{
+    color: black;
+}
+
+.submit input[type="button"]{
+    background-color: #E39C77;
+    color: white;
+    padding: .75rem 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    border: none;
+    border-radius: .5rem;
+    font-size: 1rem;
+    margin: 1rem;
+    width: 8rem;
+}
+
+.amount  input:focus{
+    background-color: #E39C77;
+    color: white;
+}
