@@ -19,7 +19,24 @@ export default function Bills() {
       }
       fetchBills();
     }, []);
+    const billType = {
+      hr: "hr",
+      s: "s",
+      hconres: "house-concurrent-resolution",
+      sconres: "senate-concurrent-resolution",
+      hjres: "house-joint-resolution",
+      sjres: "senate-joint-resolution"
+    }
+    function truncateWords(text, maxWords){
+      const words = text.split(" ")
+        if(words.length > maxWords)
+        {
+          return words.slice(0, maxWords).join(" ") + "..."
+        }
+        return text
 
+
+    }
   return (
     <div className={styles.sidebar}>
       <div className={styles.billbox}>
@@ -33,17 +50,19 @@ export default function Bills() {
               <th>Chamber</th>
               <th>Bill</th>
               <th>Date Introduced</th>
-              <th>Status</th>
+              <th>Title</th>
             </tr>
           </thead>
           <tbody>
             {bills.map((b) => {
+                const type = billType[b.bill_type.toLowerCase()]
+                const shortTitle = truncateWords(b.title, 8)
               return (
               <tr key={b.id}>
                 <td>{b.congress}</td>
-                <td><a href={`https://www.congress.gov/bill/119th-congress/${b.bill_type}/${b.bill_number}`} target="_blank"> {b.bill_type} {b.number}</a></td>
-                <td>{b.introduced_date}</td>
-                <td>{}</td>
+                <td><a href={`https://www.congress.gov/bill/${b.congress}-congress/${type}}/${b.number}`} target="_blank"> {b.bill_type.toUpperCase()} {b.number}</a></td>
+                <td>{new Date(b.introduced_date).toLocaleDateString()}</td>
+                <td>{shortTitle}</td>
                 </tr>
 
            )})}
