@@ -9,8 +9,8 @@ export default function Sidebar() {
   useEffect(() => {
       async function fetchTrades() {
         try {
-          const res = await fetch("http://127.0.0.1:8000/trades"); //Calls the API and Limits to 15 trades
-          const data = await res.json();
+          const response = await fetch("https://127.0.0.0/trades"); //Calls the API and Limits to 15 trades
+          const data = await response.json();
           setTrades(data);
         } catch (err) {
           console.error("Error fetching trades:", err);

@@ -1,0 +1,72 @@
+.container {
+    display: flex;
+}
+.intro {
+    display: flex;
+    flex-direction: column;
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 50px;
+    text-align: center;
+    color: #333;
+}
+.intro img {
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.intro h1 {
+    padding-left: 1px;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.bio{
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+    font-size: 1rem;
+    color: #555;
+}
+
+.table{
+  width: 100%;       
+  font-size: 0.85rem; 
+}
+
+.table th,
+.table td {
+  padding: 5px;
+  text-align: left;
+}
+
+
+.table th {
+  background-color: #848BA4;
+  color: white;
+  position: sticky;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+.table tr:hover {
+  background-color: #eaeaea;
+}
+
+.socials{
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+}
+.finance{
+  margin-top: 5rem;
+}
+.votes{
+  margin-top: 5rem;
+}
+.website{
+  margin-top: 5rem;
+}

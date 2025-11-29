@@ -5,15 +5,17 @@ import Nav from "../components/Nav"
 import { useState, useEffect } from "react";
 import styles from "./politicians.module.css";
 import Footer from "../components/Footer"
+import { useRouter } from "next/navigation";
 
 export default function Politicians() {
   const [politicians, setPoliticians] = useState([]);
   const [sortBy, setSortBy] = useState("name"); //Default sort is by name
+  const router = useRouter();
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("https://apibackend-production-e816.up.railway.app/members?chamber=house"); //Calls the politicians API 
+        const response = await fetch("https://apibackend-production-e816.up.railway.app/members?chamber=house&limit=200&offset=0"); //Calls the politicians API 
         const politician = await response.json();
         setPoliticians(politician);
       } catch (err) {
@@ -62,7 +64,7 @@ export default function Politicians() {
             {groupedByState[state]
               .sort((a, b) => a.district - b.district)
               .map((p) => (
-                <tr className={styles.row} key={p.bioguideId} onClick={() => window.open(p.url, "_blank")}>
+                <tr className={styles.row} key={p.bioguide_id} onClick={() => router.push(`/politicians/${p.bioguide_id}`)}>
                   <td>{p.district}</td>
                   <td>{p.last_name} {p.first_name}</td>
                   <td>{p.state}</td>
@@ -84,7 +86,7 @@ export default function Politicians() {
       </thead>
       <tbody>
         {sortedPoliticians.map((p) => (
-          <tr className={styles.row} key={p.bioguideId} onClick={() => window.open(p.website_url, "_blank")}>
+          <tr className={styles.row} key={p.bioguide_id} onClick={() => router.push(`/politicians/${p.bioguide_id}`)}>
             <td>{p.last_name} {p.first_name}</td>
             <td>{p.state}</td>
             <td>{p.party}</td>

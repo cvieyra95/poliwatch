@@ -1,17 +1,21 @@
 
 "use client";
-import styles from "./Bills.module.css"
+import styles from "./bills.module.css"
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Header from "../components/Header"
+import Nav from "../components/Nav"
+import Footer from "../components/Footer"
 
-export default function Bills() {
+export default function AllBills() {
 
   const [bills, setBills] = useState([])
   useEffect(() => {
       async function fetchBills() {
         try {
-          const response = await fetch("https://apibackend-production-e816.up.railway.app/bills/?congress=119&limit=15") //Call API for Bills
+          const response = await fetch("https://apibackend-production-e816.up.railway.app/bills/?congress=119&limit=200") //Call API for Bills
           const data = await response.json()
+
           const sorted = data.sort((a,b) => new Date(b.introduced_date) -new Date(a.introduced_date))
           setBills(sorted);
         } catch (err) {
@@ -35,15 +39,14 @@ export default function Bills() {
           return words.slice(0, maxWords).join(" ") + "..."
         }
         return text
-
-
-    }
+      }
   return (
     <div className={styles.sidebar}>
+        <Header/>
+        <Nav/>
       <div className={styles.billbox}>
         <div className={styles.billheader}>
-          <h3>Latest Bills</h3>
-          <Link className= {styles.viewall}href='/bills'>View all</Link>
+          <h3>All Bills</h3>
         </div>
          <table className={styles.table}>
           <thead>
@@ -71,6 +74,7 @@ export default function Bills() {
         </table>
         
       </div>
+      <Footer/>
     </div>
   );
 }
