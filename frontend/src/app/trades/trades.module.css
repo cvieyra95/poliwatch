@@ -1,0 +1,79 @@
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    top: 13.75rem;
+    right: .5rem;
+}
+
+.tradebox{
+    background-color: #fff;
+    padding: .625rem;
+    border-radius: .75rem;
+    border-bottom: .1em solid #ddd;
+    color: black;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: black;
+    
+}
+.tradeheader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1rem;
+    font-size: 0.9rem; 
+    margin-top: -.95rem;
+    margin-bottom: -.625rem;
+    position: sticky;
+    
+}
+
+.viewall {
+    color: black;
+    font-size: .75rem;
+    cursor: pointer;
+}
+.table{
+  width: 100%;    
+  font-size: 0.85rem; 
+  border-collapse: collapse;
+
+}
+
+.table th,
+.table td {
+  padding: .35rem;
+  text-align: left;
+  
+}
+
+.table th {
+  background-color: #848BA4;
+  color: white;
+  position: sticky;
+  
+}
+
+.table tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+.table tr:hover {
+  background-color: #eaeaea;
+}
+.row {
+  cursor: pointer;
+}
+
+.type{
+  text-transform: uppercase;
+}
+.buy{
+  color: #5ac53a;
+}
+.sell{
+  color: red;
+}
+.symbol a{
+  text-decoration: none;
+}

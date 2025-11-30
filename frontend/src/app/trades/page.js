@@ -1,8 +1,10 @@
-// components/Sidebar.js
-"use client";
-import styles from "./Sidebar.module.css"
+"use client"
+import styles from "./trades.module.css"
 import { useState, useEffect } from "react";
-import Link from "next/link";
+import Header from "../components/Header"
+import Nav from "../components/Nav"
+import Footer from "../components/Footer"
+
 
 export default function Sidebar() {
 
@@ -22,10 +24,11 @@ export default function Sidebar() {
 
   return (
     <div className={styles.sidebar}>
+        <Header/>
+        <Nav/>
       <div className={styles.tradebox}>
         <div className={styles.tradeheader}>
-          <h3>Latest Trades</h3>
-          <Link className= {styles.viewall}href='/trades'>View all</Link>
+          <h3>All Latest Trades</h3>
         </div>
          <table className={styles.table}>
           <thead>
@@ -34,19 +37,20 @@ export default function Sidebar() {
               <th>Symbol</th>
               <th>Type</th>
               <th>Amount</th>
+              <th>Date</th>
             </tr>
           </thead>
           <tbody>
-            {trades.slice(0,15).map((p) => {
+            {trades.map((p) => {
               const tradeType = p.type.toLowerCase() === "buy" ? styles.buy : styles.sell
               return (
+                
                 <tr className={styles.row} key={p.id}>
                   <td>{p.name}</td>
                   <td className={styles.symbol}><a href={`https://www.google.com/search?q=${p.company}`} target="_blank">${p.company}</a></td>
                   <td className={`${styles.type} ${tradeType}`}>{p.type.toUpperCase()}</td>
-
                   <td className={`${styles.type}`}>{p.amount}</td>
-                  
+                  <td>{p.date}</td>
                 </tr>
               )
             })}
@@ -54,6 +58,7 @@ export default function Sidebar() {
         </table>
         
       </div>
+      <Footer/>
     </div>
   );
 }

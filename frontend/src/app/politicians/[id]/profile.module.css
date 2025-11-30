@@ -58,15 +58,22 @@
 }
 
 .socials{
-  margin-top: 5rem;
+  margin-top: 3rem;
   margin-bottom: 5rem;
 }
+.socials a{
+  padding: 1rem;
+}
 .finance{
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 .votes{
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 .website{
-  margin-top: 5rem;
+  margin-top: 2rem;
+}
+.website a{
+  display: flex;
+  margin-top: 1rem;
 }

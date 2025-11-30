@@ -53,37 +53,10 @@ export default async function profile({params}) {
                 <div className={styles.bio}>
                     <h2>Biography</h2>
                     <p>{bio.summary}</p>
-
                     <div className={styles.website}>
-                        <h2>Official Website</h2>
-                        <a href={socials.official_website} target="_blank">Website</a>
-                    </div>
-
-                    <div className={styles.votes}>
-                        <h2>Recent Bills Voted On</h2>
-                        <table className={styles.table}>
-                            <thead>
-                                <tr>
-                                    <th>Date</th>
-                                    <th>Title</th>
-                                    <th>Vote</th>
-                                    <th>Result</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {/*
-                                {orderedBills.slice(0,10).map(bill => (
-                                    <tr key={bill.vote_id}>
-                                    <td>{new Date(bill.date).toLocaleDateString()}</td>
-                                    <td>{bill.description}</td>
-                                    <td>{bill.position}</td>
-                                    <td>{bill.result}</td>
-                                    </tr>
-                                    
-                                ))}
-                                */}
-                            </tbody>
-                            </table>
+                        <h2>Websites</h2>
+                        <a href={`https://www.congress.gov/member/${data.first_name.toLowerCase()}-${data.last_name.toLowerCase()}/${id}`} target="_blank">Congress Website</a>
+                        <a href={socials.official_website} target="_blank">Official Website</a>
                     </div>
 
                     <div className={styles.finance}>
