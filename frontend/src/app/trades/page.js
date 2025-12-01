@@ -28,7 +28,7 @@ export default function Sidebar() {
         <Nav/>
       <div className={styles.tradebox}>
         <div className={styles.tradeheader}>
-          <h3>All Latest Trades</h3>
+          <h3>All Latest Stock Trades</h3>
         </div>
          <table className={styles.table}>
           <thead>

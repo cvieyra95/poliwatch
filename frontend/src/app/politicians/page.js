@@ -14,14 +14,32 @@ export default function Politicians() {
 
   useEffect(() => {
     async function fetchData() {
+      const limit = 200
+      let offset = 0
+      let allMembers = []
+      let keepFetching = true
       try {
-        const response = await fetch("https://apibackend-production-e816.up.railway.app/members?chamber=house&limit=200&offset=0"); //Calls the politicians API 
-        const politician = await response.json();
-        setPoliticians(politician);
+        while (keepFetching) {
+          const response = await fetch(
+            `https://apibackend-production-e816.up.railway.app/members?chamber=house&limit=${limit}&offset=${offset}`
+          );
+          const data = await response.json();
+
+          if (!Array.isArray(data) || data.length === 0) {
+            keepFetching = false;
+            break;
+          }
+
+          allMembers = [...allMembers, ...data];
+          offset += limit;
+        }
+
+        setPoliticians(allMembers);
       } catch (err) {
         console.error("Error fetching politicians:", err);
       }
     }
+
     fetchData();
   }, []);
 
