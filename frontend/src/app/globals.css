@@ -26,7 +26,7 @@ nav a:hover {
     text-decoration: underline;
 }
 
-.greeting {
+.greeting   {
   display: flex;
   justify-content: space-between;
   align-items: flex-start; 
@@ -36,8 +36,8 @@ nav a:hover {
 }
 .greeting h3{
    font-size: 1rem;
-  
-   margin-top: .4rem;
+   color: white;
+   margin-top: 0rem;
   }
 
 .greeting button{
