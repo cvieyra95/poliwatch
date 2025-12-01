@@ -67,6 +67,10 @@
 .finance{
   margin-top: 3rem;
 }
+.finance a{
+  display: flex;
+  margin-top: 1rem;
+}
 .votes{
   margin-top: 3rem;
 }

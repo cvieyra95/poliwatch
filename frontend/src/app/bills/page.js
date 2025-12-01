@@ -45,7 +45,7 @@ export default function AllBills() {
         <Nav/>
       <div className={styles.billbox}>
         <div className={styles.billheader}>
-          <h3>All Bills</h3>
+          <h3>All Latest Bills</h3>
         </div>
          <table className={styles.table}>
           <thead>

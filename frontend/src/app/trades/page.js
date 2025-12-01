@@ -41,16 +41,16 @@ export default function Sidebar() {
             </tr>
           </thead>
           <tbody>
-            {trades.map((p) => {
+            {trades.map((p, index) => {
               const tradeType = p.type.toLowerCase() === "buy" ? styles.buy : styles.sell
               return (
                 
-                <tr className={styles.row} key={p.id}>
+                <tr className={styles.row} key={`${p.name}-${p.company}-${index}`}>
                   <td>{p.name}</td>
                   <td className={styles.symbol}><a href={`https://www.google.com/search?q=${p.company}`} target="_blank">${p.company}</a></td>
                   <td className={`${styles.type} ${tradeType}`}>{p.type.toUpperCase()}</td>
                   <td className={`${styles.type}`}>{p.amount}</td>
-                  <td>{p.date}</td>
+                  <td>{new Date(p.date).toLocaleDateString()}</td>
                 </tr>
               )
             })}

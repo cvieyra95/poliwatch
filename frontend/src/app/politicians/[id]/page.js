@@ -1,3 +1,5 @@
+//Function Requirement #6
+
 import Header from "../../components/Header"
 import Nav from "../../components/Nav"
 import styles from "./profile.module.css"
@@ -61,7 +63,9 @@ export default async function profile({params}) {
 
                     <div className={styles.finance}>
                         <h2>Financial Data</h2>
-                        <a href={`https://www.opensecrets.org/members-of-congress/summary?cid=${socials.opensecrets_id}`} target="_blank">opensecrets.org</a>
+                        <a href={`https://www.opensecrets.org/members-of-congress/summary?cid=${socials.opensecrets_id}`} target="_blank">opensecrets.org (Campaign Data)</a>
+                        <a href={`https://www.capitoltrades.com/politicians/${id}`} target="_blank">capitoltrades.com (Trading Data)</a>
+
                     </div>
                     <div className={styles.socials}>
                     <h2>Social Media Links</h2>

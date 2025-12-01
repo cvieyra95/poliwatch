@@ -9,7 +9,7 @@ export default function Nav() {
     return(
         <nav>
             <div className="nav-left">
-                <Link href="/">News</Link>
+                <Link href="/">Home</Link>
                 <Link href="/politicians">Politicians</Link>
                 <Link href="/contact">Contact</Link>
             </div>
