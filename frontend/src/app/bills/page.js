@@ -1,4 +1,3 @@
-
 "use client"
 import styles from "./bills.module.css"
 import { useState, useEffect } from "react";

@@ -1,4 +1,3 @@
-//Functional Requrement #6
 "use client"; // needed for useState & useEffect
 import Header from "../components/Header"
 import Nav from "../components/Nav"
@@ -53,7 +52,8 @@ export default function Politicians() {
   acc[p.state].push(p);
   return acc;
   }, {});
-
+  //Functional Requrement #6
+  //The system shall allow users to explore detailed political profiles and verify information.
   return (
     <div> 
         <Header/>

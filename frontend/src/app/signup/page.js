@@ -1,4 +1,3 @@
-//Functional Requirement #3
 'use client'
 import { use, useState } from "react"
 import Header from "../components/Header"
@@ -46,6 +45,8 @@ export default function Signup(){
             alert("Something went wrong try again. ")
         }
     }
+    //Functional Requirement #3
+    //The system shall allow users to create a Poliwatch account after installation.
 
     return(
         <div>

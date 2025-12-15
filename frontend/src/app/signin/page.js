@@ -1,4 +1,3 @@
-//Functional Requirement #3
 'use client'
 import Header from "../components/Header"
 import Nav from "../components/Nav"
@@ -32,6 +31,8 @@ export default function Signin() {
             alert("Failed to login")
         }
     }
+    //Functional Requirement #8
+    //Logging into Poliwatch Hub 
 
     return(
         <div>

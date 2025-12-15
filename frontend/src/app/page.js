@@ -1,4 +1,3 @@
-//Functional Requirement #2
 import Header from "./components/Header"
 import Nav from "./components/Nav"
 import ArticleCard from "./components/ArticleCard"
@@ -37,6 +36,9 @@ async function fetchArticles() {
   }
   
 }
+
+//Functional Requirement #2
+//The system shall allow users to access the Poliwatch Hub homepage.
 
 export default async function Home() {
   const articles = await fetchArticles()

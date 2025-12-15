@@ -18,6 +18,8 @@ export default function Nav() {
              {session ? (
                 <div className="greeting"> 
                 <h3>Welcome, {session.user.username}</h3>
+
+                {/*Functional Requirement 9: allow users to log out from the Poliwatch Hub */}
                 <button onClick={() =>signOut({callbackUrl:process.env.NEXTAUTH_URL})}>Sign Out</button>
                 </div>
                 ) : (
